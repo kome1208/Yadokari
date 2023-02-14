@@ -1,29 +1,31 @@
 {
-	"name": "kikai",
-	"version": "1.2.0",
-	"description": "A personal Discord.JS v14 bot template",
-	"main": "kikai.js",
-	"scripts": {
-		"start": "node kikai.js",
-		"dev": "nodemon kikai.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/roeegh/kikai.git"
-	},
-	"author": {
-		"name": "Roeegh",
-		"url": "https://github.com/roeegh",
-		"email": "admin@roeegh.dev"
-	},
-	"license": "MIT",
-	"dependencies": {
-		"@discordjs/rest": "^1.1.0",
-		"discord-api-types": "^0.36.3",
-		"discord.js": "^14.4.0",
-		"dotenv": "^16.0.2"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.20"
-	}
+    "name": "yadokari",
+    "version": "1.0.0",
+    "description": "its a hermit crab",
+    "main": "crab.js",
+    "scripts": {
+        "start": "node yadokari.js",
+        "dev": "nodemon yadokari.js",
+        "taze": "taze major -IR"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/roeegh/Yadokari.git"
+    },
+    "author": {
+        "name": "Roeegh",
+        "url": "https://github.com/roeegh",
+        "email": "admin@roeegh.dev"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@discordjs/rest": "^1.5.0",
+        "discord-api-types": "^0.37.33",
+        "discord.js": "^14.7.1",
+        "dotenv": "^16.0.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20",
+        "taze": "^0.8.5"
+    }
 }
