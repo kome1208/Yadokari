@@ -8,8 +8,8 @@ module.exports = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
 		let channel = interaction.options.getChannel('channel') ?? interaction.channel;
-		const [prompts, iphones, ipads, ioses] = [
-			['Select your iPhone', 'Select your iPad', 'Select your iOS version'],
+		const [prompts, iphones, ipads, ioses, languages] = [
+			['Select your iPhone', 'Select your iPad', 'Select your iOS version', 'Select your language'],
 			[
 				{ label: 'iPhone 5s', value: '1075173438685192214' },
 				{ label: 'iPhone 6', value: '1075173421396262972' },
@@ -71,6 +71,11 @@ module.exports = {
 				{ label: '16.1', value: '1075189185213898874' },
 				{ label: '16.1.1', value: '1075189200686698597' },
 				{ label: '16.1.2', value: '1075189222706794607' }
+			],
+			[
+				{ label: 'English', value: '1074651331450638377' },
+				{ label: '中文', value: '1074653366275297280' },
+				{ label: '日本語', value: '1074653421329719347' }
 			]
 		];
 
@@ -127,6 +132,26 @@ module.exports = {
 								return {
 									label: ios.label,
 									value: ios.value
+								};
+							})
+						)
+				)
+			]
+		});
+
+		channel.send({
+			content: prompts[3],
+			components: [
+				new ActionRowBuilder().addComponents(
+					new StringSelectMenuBuilder()
+						.setCustomId('language')
+						.setMinValues(0)
+						.setMaxValues(languages.length)
+						.addOptions(
+							languages.map(language => {
+								return {
+									label: language.label,
+									value: language.value
 								};
 							})
 						)
