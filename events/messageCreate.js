@@ -1,8 +1,29 @@
+const { EmbedBuilder } = require('discord.js');
+
 module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
 		if (message.author.bot) return;
-		if (message.content.includes(`<@${message.client.user.id}>`) || message.content.includes(`<@!${message.client.user.id}>`)) message.channel.send(message.author.toString());
-		if (message.content === '(\u256f\u00b0\u25a1\u00b0\uff09\u256f\ufe35 \u253b\u2501\u253b') message.channel.send('\u252c\u2500\u252c\ufeff \u30ce( \u309c-\u309c\u30ce');
+		if (message.content.includes('discord.com/channels')) {
+			try {
+				let embed = new EmbedBuilder();
+				let messageID = message.content.split('/').pop();
+				let msg = await message.channel.messages.fetch(messageID);
+
+				embed.setAuthor({ name: msg.author.username, iconURL: msg.author.avatarURL() });
+				msg.content ? embed.setDescription(msg.content) : null;
+				msg.attachments.size > 0 ? embed.setImage(msg.attachments.first().url) : null;
+				embed.addFields({ name: 'Jump to message', value: `[Click here](https://discord.com/channels/${msg.guild.id}/${msg.channel.id}/${msg.id})`, inline: true });
+				embed.setColor('Random');
+				embed.setTimestamp();
+
+				message.channel.send({
+					allowedMentions: { users: [] },
+					embeds: [embed]
+				});
+
+				message.delete();
+			} catch (error) {}
+		}
 	}
 };
