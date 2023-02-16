@@ -15,7 +15,7 @@ module.exports = {
 				const msg = await channel.messages.fetch(messageId);
 				const images = msg.attachments.filter(attachment => attachment.contentType.startsWith('image'));
 				embed.setAuthor({ name: msg.author.username, iconURL: msg.author.displayAvatarURL() })
-				.setDescription(msg.content ?? null)
+				.setDescription(msg.content ? msg.content : null)
 				.setImage(images.size > 0 ? images.first().url : null)
 				.addFields({ name: 'Jump to message', value: `[Click here](https://discord.com/channels/${guildId}/${channelId}/${messageId})`, inline: true })
 				.setColor('Random')
