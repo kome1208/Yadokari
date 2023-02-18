@@ -4,7 +4,7 @@ module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
 		if (message.author.bot) return;
-		const MSGLINK_REGEX = /http(?:s)?:\/\/(?:.*)?discord\.com\/channels\/(?<guildId>\d{17,})\/(?<channelId>\d{17,})\/(?<messageId>\d{17,})/g
+		const MSGLINK_REGEX = /http(?:s)?:\/\/(?:.*)?discord(?:app)?\.com\/channels\/(?<guildId>\d{17,})\/(?<channelId>\d{17,})\/(?<messageId>\d{17,})/g
 		let msg_result;
 		while ((msg_result = MSGLINK_REGEX.exec(message.content)) !== null) {
 			try {
