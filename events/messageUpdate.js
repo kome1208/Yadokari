@@ -17,14 +17,19 @@ module.exports = {
             );
             channel.send({ embeds: [embed] });
         } else if (oldMessage.attachments !== newMessage.attachments) {
-            let removedAttachment = oldMessage.attachments.filter(attachment => !newMessage.attachments.has(attachment.id)).first();
-            embed.setTitle('File Removed')
-            .addFields(
-                { name: 'File', value: `[${removedAttachment.name}](${removedAttachment.url})`, inline: true },
-                { name: 'Description', value: removedAttachment.description || 'No Description Provided', inline: true },
-                { name: 'Jump to message', value: `[Click here](${newMessage.url})`, inline: false }
-            );
-            channel.send({ embeds: [embed] });
+            try {
+                let removedAttachment = oldMessage.attachments.filter(attachment => !newMessage.attachments.has(attachment.id)).first();
+                embed.setTitle('File Removed')
+                .addFields(
+                    { name: 'File', value: `[${removedAttachment.name}](${removedAttachment.url})`, inline: true },
+                    { name: 'Description', value: removedAttachment.description || 'No Description Provided', inline: true },
+                    { name: 'Jump to message', value: `[Click here](${newMessage.url})`, inline: false }
+                );
+                channel.send({ embeds: [embed] });
+            } catch (e) {
+                embed.setTitle('Attachment Name caused error');
+                channel.send({ embeds: [embed] });
+            }
         }
     }
 }
