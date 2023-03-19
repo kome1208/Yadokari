@@ -16,7 +16,7 @@ module.exports = {
                 { name: 'Jump to message', value: `[Click here](${newMessage.url})`, inline: false }
             );
             channel.send({ embeds: [embed] });
-        } else if (oldMessage.attachments !== newMessage.attachments) {
+        } else if (oldMessage.attachments.size > newMessage.attachments.size) {
             try {
                 let removedAttachment = oldMessage.attachments.filter(attachment => !newMessage.attachments.has(attachment.id)).first();
                 embed.setTitle('File Removed')
