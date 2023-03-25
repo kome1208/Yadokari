@@ -9,7 +9,7 @@ module.exports = {
 			.setTitle('Member Kicked/Left')
 			.setThumbnail(member.user.avatarURL())
 			.addFields({ name: 'User', value: member.user.tag, inline: false })
-			.setColor('RED')
+			.setColor('Red')
 			.setTimestamp()
 			]
 		});
