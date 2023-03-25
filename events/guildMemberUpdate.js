@@ -5,7 +5,7 @@ module.exports = {
 	async execute(oldState, newState) {
         let auditLog = await newState.guild.fetchAuditLogs({limit:1});
 		let entry = auditLog.entries.first();
-		if (entry.changes[0].key === "communication_disabled_until") {
+		if (entry.changes[0]?.key === "communication_disabled_until") {
 			let channel = await newState.guild.channels.fetch('1075283803171455037');
 			if (entry.changes[0].new) {
 				channel.send({ embeds: [
