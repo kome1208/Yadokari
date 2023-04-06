@@ -125,3 +125,5 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
 })();
 
 client.login(process.env.TOKEN);
+
+process.on('uncaughtException', (e) => console.error(`[ERROR] ${e}`));
