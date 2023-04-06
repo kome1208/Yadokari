@@ -4,9 +4,10 @@ module.exports = {
 	id: 'verify',
 	async execute(interaction) {
         await interaction.deferReply({ ephemeral: true }).catch(() => {});
-        if (interaction.member.roles.cache.has('1079892872742043785')) return interaction.editReply('You are already verified!');
+        let member = await interaction.member.fetch({ force: true });
+        if (member.roles.cache.has('1079892872742043785')) return interaction.editReply('You are already verified!');
         try {
-            await interaction.member.roles.add('1079892872742043785');
+            await member.roles.add('1079892872742043785');
             await interaction.editReply({ embeds: [
                     new EmbedBuilder()
                         .setTitle('Verified!')
