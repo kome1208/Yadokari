@@ -4,7 +4,7 @@ module.exports = {
     name: 'messageDelete',
     async execute (message) {
         if (message.author.bot) return;
-        let channel = await message.guild.channels.fetch('1075283803171455037');
+        let channel = await message.guild.channels.fetch('1134748822514434160');
         let embed = new EmbedBuilder()
         .setAuthor({ name: message.author.username, iconURL: message.author.avatarURL() })
         .setTitle('Message Deleted')

@@ -4,7 +4,7 @@ module.exports = {
     name: 'messageUpdate',
     async execute (oldMessage, newMessage) {
         if (oldMessage.author.bot) return;
-        let channel = await newMessage.guild.channels.fetch('1075283803171455037');
+        let channel = await newMessage.guild.channels.fetch('1134748822514434160');
         let embed = new EmbedBuilder()
         .setAuthor({ name: newMessage.author.username, iconURL: newMessage.author.avatarURL() })
         .setColor('Random');
