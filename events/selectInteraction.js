@@ -1,7 +1,10 @@
+const ignore = ['select_tweak'];
+
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction) {
 		if (!interaction.isStringSelectMenu()) return;
+		if (ignore.includes(interaction.customId)) return;
 		const command = interaction.client.selectCommands.get(interaction.customId);
 
 		if (!command) return await require('../messages/defaultSelectError').execute(interaction);
