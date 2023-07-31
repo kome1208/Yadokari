@@ -22,7 +22,7 @@ module.exports = {
                 { name:'Repository', value:`[${pkg.Repository.Name}](${pkg.Repository.Link})`, inline:true}
             )
             .setThumbnail(pkg.Icon || null)
-            .setImage(pkg.Screenshot.at(0))
+            .setImage(pkg?.Screenshot?.at(0) || null)
             .setColor('Random');
         })
         const options = embeds.map((embed, i) => ({label:(`${embed.data.title?.length > 100 ? `${embed.data.title.slice(0, 99)}…` : embed.data.title ?? `${i+1}ページ`}`), value:`${i}`}));
