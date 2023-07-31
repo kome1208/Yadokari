@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
         await interaction.deferReply();
         const query = interaction.options.getString('query');
-        const { data } = await axios.get(`https://scary-imelda-scheem18.koyeb.app/misaka/search?q=${encodeURIComponent(query)}&limit=25`);
+        const { data } = await axios.get(`https://scary-imelda-scheem18.koyeb.app/misaka/tweaks/search?q=${encodeURIComponent(query)}&limit=25`);
         const embeds = data.packages.slice(0,25).map((pkg) => {
             return new EmbedBuilder()
             .setAuthor({ name:`${pkg.Repository.Name}`, iconURL:pkg.Repository.Icon})
@@ -22,6 +22,7 @@ module.exports = {
                 { name:'Repository', value:`[${pkg.Repository.Name}](${pkg.Repository.Link})`, inline:true}
             )
             .setThumbnail(pkg.Icon || null)
+            .setImage(pkg.Screenshot.at(0))
             .setColor('Random');
         })
         const options = embeds.map((embed, i) => ({label:(`${embed.data.title?.length > 100 ? `${embed.data.title.slice(0, 99)}…` : embed.data.title ?? `${i+1}ページ`}`), value:`${i}`}));
