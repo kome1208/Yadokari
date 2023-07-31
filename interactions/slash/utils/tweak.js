@@ -20,7 +20,8 @@ module.exports = {
                 { name:'Author', value:pkg?.Author?.Label || pkg.Repository.Default.Author.Label, inline:true },
                 { name:'Version', value:pkg.Releases.at(-1).Version, inline:true },
                 { name:'PackageID', value:pkg.PackageID, inline:true },
-                { name:'Repository', value:`[${pkg.Repository.Name}](${pkg.Repository.Link})`, inline:true}
+                { name:'Repository', value:`[${pkg.Repository.Name}](${pkg.Repository.Link})`, inline:true },
+                { name:'Tweak Page', value:`[Open](https://straight-tamago.github.io/misaka/?repo=${pkg.Repository.Link}&tweak=${pkg.PackageID})`, inline:true }
             )
             .setThumbnail(pkg.Icon || null)
             .setImage(pkg?.Screenshot?.at(0) || null)
